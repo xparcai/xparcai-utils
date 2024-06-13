@@ -1,3 +1,3 @@
-import { add } from 'xparcai-utils'
+import { isType } from 'xparcai-utils'
 
-console.log('pkg => ', add(1, 2))
+console.log('pkg => ', isType('xparcai', 'string'))

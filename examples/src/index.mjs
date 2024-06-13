@@ -1,3 +1,3 @@
-import { add } from '../packages/core/dist/index.esm.js'
+import { isType } from '../packages/core/dist/index.esm.js'
 
-console.log('mjs => ', add(12, 9))
+console.log('mjs => ', isType('xparcai', 'string'))
