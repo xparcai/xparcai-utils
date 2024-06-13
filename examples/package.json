@@ -28,7 +28,7 @@
     "test:cjs": "esno watch ./src/index.cjs",
     "test:mjs": "esno watch ./src/index.mjs",
     "test:pkg": "esno watch ./src/index.ts",
-    "clean": "rimraf ~ && rimraf node_modules"
+    "clean": "rimraf node_modules"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
