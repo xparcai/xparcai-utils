@@ -99,7 +99,27 @@ importers:
         specifier: workspace:*
         version: link:../packages/core
 
-  packages/core: {}
+  packages/core:
+    dependencies:
+      '@xparcai-utils/is':
+        specifier: workspace:*
+        version: link:../is
+      '@xparcai-utils/string':
+        specifier: workspace:*
+        version: link:../string
+      '@xparcai-utils/tool':
+        specifier: workspace:*
+        version: link:../tool
+
+  packages/is:
+    devDependencies:
+      '@xparcai-utils/tool':
+        specifier: workspace:*
+        version: link:../tool
+
+  packages/string: {}
+
+  packages/tool: {}
 
 packages:
 

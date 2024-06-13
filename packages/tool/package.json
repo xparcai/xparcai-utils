@@ -1,5 +1,5 @@
 {
-  "name": "xparcai-utils",
+  "name": "@xparcai-utils/tool",
   "type": "module",
   "version": "0.0.0",
   "description": "🍒 Collection of common JavaScript or TypeScript utils.",
@@ -50,10 +50,5 @@
     "clean": "run-s clean:*",
     "clean:dist": "rimraf dist",
     "clean:deps": "rimraf node_modules"
-  },
-  "dependencies": {
-    "@xparcai-utils/is": "workspace:*",
-    "@xparcai-utils/string": "workspace:*",
-    "@xparcai-utils/tool": "workspace:*"
   }
 }
