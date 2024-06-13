@@ -1,0 +1,13 @@
+name: 🍲 Others
+
+description: 为工具库创建 issue
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 描述
+      description: 清晰简洁地描述问题。谢谢！
+      placeholder: 我想要...
+    validations:
+      required: true
