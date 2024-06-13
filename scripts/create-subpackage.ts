@@ -60,6 +60,14 @@ function copySubpackageTemplate({
     return
   }
 
+  // 改index.test.ts
+  if (basename(templateDirPath) === 'index.test.ts') {
+    let testContent = fs.readFileSync(templateDirPath, 'utf-8')
+    testContent = testContent.replace('vitest module', `@xparcai-utils/${subpackageName}`)
+    fs.writeFileSync(subpackageDirPath, testContent)
+    return
+  }
+
   fs.copyFileSync(templateDirPath, subpackageDirPath)
 }
 
