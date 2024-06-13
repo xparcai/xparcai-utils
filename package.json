@@ -36,7 +36,7 @@
     "lint": "eslint .",
     "test": "vitest",
     "clean": "run-s clean:*",
-    "clean:deps": "rimraf ~ && rimraf node_modules && pnpm -r run clean",
+    "clean:deps": "rimraf node_modules && pnpm -r run clean",
     "clean:lock": "rimraf pnpm-lock.yaml",
     "preinstall": "npx only-allow pnpm",
     "prepare": "npx simple-git-hooks",

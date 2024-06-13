@@ -49,6 +49,6 @@
     "test": "vitest",
     "clean": "run-s clean:*",
     "clean:dist": "rimraf dist",
-    "clean:deps": "rimraf ~ && rimraf node_modules"
+    "clean:deps": "rimraf node_modules"
   }
 }
