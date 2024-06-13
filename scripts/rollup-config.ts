@@ -1,5 +1,3 @@
-import { dirname, resolve as pathResolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import type { RollupOptions } from 'rollup'
 import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
@@ -9,12 +7,7 @@ import dts from 'rollup-plugin-dts'
 import json from '@rollup/plugin-json'
 import eslint from '@rollup/plugin-eslint'
 import terser from '@rollup/plugin-terser'
-
-export function resolveRealPath(path: string) {
-  const fileName = fileURLToPath(import.meta.url)
-  const dirName = dirname(fileName)
-  return pathResolve(dirName, path)
-}
+import { resolveRealPath } from './utils'
 
 export function resolveRollupConfig(packageName: string): RollupOptions[] {
   return [
