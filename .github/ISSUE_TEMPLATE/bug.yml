@@ -1,0 +1,55 @@
+name: 🐞 Bug 上报
+title: '[Bug] - 请将这里替换为您的 Bug 标题'
+description: 向工具库上报一个 Bug 。
+labels: [这TM都能出问题！离了个大谱！]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        非常感谢您能花时间反馈问题！
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: 描述出现的问题
+      description: 清晰简洁地描述错误是什么。如果您打算针对此问题提交PR，请在描述中告诉我们。谢谢！
+      placeholder: 描述出现的问题
+    validations:
+      required: false
+  - type: input
+    id: reproduction
+    attributes:
+      label: 最小可重现示例
+      description: 请提供可以重现您遇到的问题的[最小可重现示例](https://stackoverflow.com/help/minimal-reproducible-example)。
+      placeholder: 最小可重现示例链接
+    validations:
+      required: false
+  - type: textarea
+    id: system-info
+    attributes:
+      label: 系统信息
+      description: 执行 `npx envinfo --system --npmPackages '{xparcai-utils,@xparcai-utils/*}' --binaries --browsers` 输出
+      render: Shell
+      placeholder: System, Binaries, Browsers
+    validations:
+      required: false
+  - type: dropdown
+    id: package-manager
+    attributes:
+      label: 使用的包管理器
+      description: 选择您使用的包管理器
+      options:
+        - npm
+        - yarn
+        - pnpm
+    validations:
+      required: true
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: 检查
+      description: 提交问题之前，请确保您执行以下操作
+      options:
+        - label: 检查是否存在相同错误的[issue](https://github.com/xparcai/xparcai-utils/issues)以避免重复创建。
+          required: true
+        - label: 提供的[最小可重现示例](https://stackoverflow.com/help/minimal-reproducible-example)是包含错误的。
+          required: true

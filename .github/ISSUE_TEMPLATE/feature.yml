@@ -1,0 +1,43 @@
+name: 👻 Feature Request 上报
+title: '[Feature Request] - 请将这里替换为您的 Feature Request 标题'
+description: 建议向工具库添加一个新功能。
+labels: [还卷！卷不动了！不学了！]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您对该项目感兴趣并抽出宝贵时间填写此建议报告！此报告表格仅供请求添加功能！ 例如，请求新的功能、行为等
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: 简要描述问题
+      description: 清晰简洁地描述遇到的问题。例如，我总是在遇到以下情况时感到很麻烦...
+    validations:
+      required: false
+  - type: textarea
+    id: suggested-solution
+    attributes:
+      label: 建议的解决方案
+      description: 清晰简洁地描述您想要实现的效果。
+      placeholder: |
+        作为用户，我期望 ___ 结果，但 ___ ...
+
+        我希望看到的理想结果：
+        1. 输出一个字符串...
+    validations:
+      required: false
+  - type: textarea
+    validations:
+      required: false
+    attributes:
+      label: 考虑过的替代方案
+      description: 清晰简洁的描述您考虑过的任何替代解决方案或功能。
+  - type: textarea
+    attributes:
+      label: 截图或视频
+      description: |
+        如果适用，请添加屏幕截图或视频来帮助解释您的问题。
+        有关支持的文件图像/文件类型和文件大小限制的更多信息，请参阅以下链接：
+        https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/attaching-files
+      placeholder: |
+        您可以将视频或图像文件拖到这里 ↓

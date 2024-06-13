@@ -1,3 +1,3 @@
-const { add } = require('../../packages/core/dist/index.cjs')
+const { isType } = require('../../packages/core/dist/index.cjs')
 
-console.log('cjs =>', add(2, 9))
+console.log('cjs =>', isType('xparcai', 'string'))

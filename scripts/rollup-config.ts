@@ -15,7 +15,7 @@ export function resolveRollupConfig(packageName: string): RollupOptions[] {
       input: './index.ts',
       plugins: [
         babel({
-          presets: '@babel/preset-env',
+          presets: ['@babel/preset-env'],
           exclude: 'node_modules/**',
           babelHelpers: 'bundled',
         }),

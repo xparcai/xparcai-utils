@@ -23,7 +23,10 @@
   <body>
     <div class="xparcai-welcome">欢迎测试xparcai-utils工具库</div>
     <script>
-      console.log('umd => ', window['xparcai-utils'])
+      console.log(
+        'umd => ',
+        window['xparcai-utils'].isType('xparcai', 'string'),
+      )
     </script>
   </body>
 </html>
