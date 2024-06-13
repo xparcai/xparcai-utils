@@ -1,0 +1,37 @@
+{
+  "name": "xparcai-utils-example",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "🍒 Collection of common JavaScript or TypeScript utils.",
+  "author": {
+    "name": "VictorBo",
+    "email": "hi@vtrbo.cn",
+    "github": "https://github.com/vtrbo"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/xparcai/xparcai-utils",
+  "bugs": "https://github.com/xparcai/xparcai-utils/issues",
+  "keywords": [
+    "pnpm",
+    "monorepo",
+    "javascript",
+    "typescript",
+    "vue",
+    "react",
+    "angular",
+    "svelte",
+    "utils",
+    "tools"
+  ],
+  "scripts": {
+    "test:umd": "http-server .. --cors -o /examples/src",
+    "test:cjs": "esno watch ./src/index.cjs",
+    "test:mjs": "esno watch ./src/index.mjs",
+    "test:pkg": "esno watch ./src/index.ts",
+    "clean": "rimraf ~ && rimraf node_modules"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "xparcai-utils": "workspace:*"
+  }
+}
