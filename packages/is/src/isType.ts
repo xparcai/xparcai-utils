@@ -11,6 +11,7 @@ type Types =
   | 'Null'
   | 'Date'
   | 'BigInt'
+  | 'Symbol'
   | 'WeakMap'
   | 'Map'
   | 'Set'
