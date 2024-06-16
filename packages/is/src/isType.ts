@@ -10,6 +10,7 @@ type Types =
   | 'Array'
   | 'Null'
   | 'Date'
+  | 'BigInt'
   | 'WeakMap'
   | 'Map'
   | 'Set'
