@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isString } from '../src/isString'
+import { isString } from '../index'
 
 describe('@xparcai-utils/is', () => {
   it('isString', () => {

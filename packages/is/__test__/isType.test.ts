@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isType } from '../src/isType'
+import { isType } from '../index'
 
 describe('@xparcai-utils/is', () => {
   it('isType', () => {
