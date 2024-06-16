@@ -1,3 +1,3 @@
 const { isType } = require('../../packages/core/dist/index.cjs')
 
-console.log('cjs =>', isType('xparcai', 'string'))
+console.log('cjs =>', isType('xparcai', 'String'))
