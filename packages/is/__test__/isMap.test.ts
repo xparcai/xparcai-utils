@@ -4,5 +4,6 @@ import { isMap } from '../index'
 describe('@xparcai-utils/is', () => {
   it('isMap', () => {
     expect(isMap(new Map())).toBe(true)
+    expect(isMap(new WeakMap())).toBe(false)
   })
 })
