@@ -22,6 +22,9 @@ describe('@xparcai-utils/object', () => {
     data.push([...data])
     expect(deepCopy(data)).toEqual(data)
     expect(deepCopy(data)).not.toBe(data)
+    data.push(data)
+    expect(deepCopy(data)).not.toEqual(data)
+    expect(deepCopy(data)[2]).toEqual(data[2])
   })
 
   it('deepCopy: 复制对象', () => {
@@ -44,6 +47,9 @@ describe('@xparcai-utils/object', () => {
     expect(deepCopy(data).regexp).not.toBe(data.regexp)
     expect(deepCopy(data).obj).not.toBe(data.obj)
     expect(deepCopy(data).obj.c).not.toBe(data.obj.c)
+    data.data = data
+    expect(deepCopy(data)).not.toBe(data)
+    expect(deepCopy(data).data).toEqual(data.data)
   })
 
   it('deepCopy: 复制函数', () => {
