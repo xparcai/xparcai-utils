@@ -46,6 +46,7 @@ export default () => {
     { text: '工具库', link: getFirstRoute('/functions/') },
   ]
   return defineConfig({
+    base: '/xparcai-utils/',
     title: 'XParCai工具库',
     description: 'Collection of common JavaScript or TypeScript utils.',
     themeConfig: {
