@@ -2,11 +2,7 @@ import defineConfig from '@antfu/eslint-config'
 
 export default defineConfig(
   {
-    formatters: {
-      css: true,
-      html: true,
-      markdown: 'prettier',
-    },
+    formatters: true,
   },
   {
     files: ['examples/*/*.*'],
