@@ -66,6 +66,7 @@ typings/
 chche
 .temp
 temp
+**/cache
 
 # next.js build output
 .next
