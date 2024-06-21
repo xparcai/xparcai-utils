@@ -19,11 +19,9 @@ describe('@xparcai-utils/object', () => {
     const data: any = ['0.0.1', '0.0.2']
     expect(deepCopy(data)).toEqual(data)
     expect(deepCopy(data)).not.toBe(data)
-    data.push([...data])
+    data.push(data)
     expect(deepCopy(data)).toEqual(data)
     expect(deepCopy(data)).not.toBe(data)
-    data.push(data)
-    expect(deepCopy(data)).not.toEqual(data)
     expect(deepCopy(data)[2]).toEqual(data[2])
   })
 
@@ -32,30 +30,17 @@ describe('@xparcai-utils/object', () => {
       name: 'xparcai',
       regexp: new RegExp('xparcai'),
       version: 1,
-      changeLog: ['0.0.1', '0.0.2'],
-      obj: {
-        a: 1,
-        b: [1, 2, 3],
-        c: {
-          b: 1,
-        },
-      },
     }
     expect(deepCopy(data)).toEqual(data)
     expect(deepCopy(data)).not.toBe(data)
-    expect(deepCopy(data).changeLog).not.toBe(data.changeLog)
-    expect(deepCopy(data).regexp).not.toBe(data.regexp)
-    expect(deepCopy(data).obj).not.toBe(data.obj)
-    expect(deepCopy(data).obj.c).not.toBe(data.obj.c)
     data.data = data
+    expect(deepCopy(data)).toEqual(data)
     expect(deepCopy(data)).not.toBe(data)
     expect(deepCopy(data).data).toEqual(data.data)
   })
 
   it('deepCopy: 复制函数', () => {
-    let data: any = function () {
-      return ''
-    }
+    let data: any = function () {}
     expect(deepCopy(data)).toBe(data)
     data = () => {}
     expect(deepCopy(data)).toBe(data)

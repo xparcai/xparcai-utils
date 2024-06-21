@@ -30,13 +30,10 @@ export function deepCopy<T>(data: T, hash: any = new WeakMap()): T {
     if (hash.has(data)) {
       return hash.get(data)
     }
-    // 获取对象所有自身属性的描述
-    const _desc = Object.getOwnPropertyDescriptors(data)
-    // 遍历传入参数所有键的特性
-    const _data = Object.create(Object.getPrototypeOf(data), _desc)
+    const _data: any = isArray(data) ? [] : {}
     hash.set(data, _data)
     for (const key of Reflect.ownKeys(data as object)) {
-      if (isArray((data as any)[key]) || isObject((data as any)[key])) {
+      if (isObject((data as any)[key])) {
         _data[key] = deepCopy((data as any)[key], hash)
       }
       else {
