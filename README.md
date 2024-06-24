@@ -4,6 +4,7 @@
 <p align="center"><b>别跟我说没有，我不信~！</b></p>
 
 # xparcai-utils
+
 <p align="center">
   <img src="https://img.shields.io/badge/npm-v0.0.1-brightgreen" />
   <img src="https://img.shields.io/badge/-Rollup-34495e?logo=rollup" />
@@ -15,9 +16,10 @@
 <p>
 你的救星，小趴菜工具库，一个轻量级的轮子集合，它来了~~~!
 
-[使用文档介绍](https://xparcai.github.io/xparcai-utils/)  |  [参与文档介绍](https://xparcai.github.io/xparcai-utils/CONTRIBUTING.md)
+[使用文档介绍](https://xparcai.github.io/xparcai-utils/) | [参与文档介绍](https://xparcai.github.io/xparcai-utils/CONTRIBUTING.md)
 
 # 特点
+
 - 基于TS，适配于所有使用JS的场景
 - 适用于现代ES6规范
 - 如你所见：公开、免费
@@ -43,6 +45,7 @@ pnpm add xparcai-utils
 > 那么可以复制文档中的源码，在你的项目中引入
 
 ### CDN源
+
 ```bash
 // CDN源：jsdelivr
 
@@ -54,18 +57,20 @@ https://unpkg.com/xparcai-utils@latest
 ```
 
 ## 使用
+
 ```javaScript
 import { deepCopy } from 'xparcai-utils'
 const obj1 = { a: '123', b: 456 }
 const obj2 = deepCopy(obj) // { a: '123', b: 456 }
 ```
+
 ## **参与者**
 
 这个项目需要感谢的参与者
+
 <div align="left">
   <a href="https://github.com/xparcai/xparcai-utils/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=xparcai/xparcai-utils" />
   </a>
 </div>
 <!-- 🍒🍇🫑 Collection of common JavaScript or TypeScript utils. -->
-

@@ -36,6 +36,7 @@
     "release:bummp": "bumpp -r",
     "release:publish": "pnpm -r --filter=./packages/* publish",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "vitest",
     "clean": "run-s clean:*",
     "clean:deps": "rimraf node_modules && pnpm -r run clean",
