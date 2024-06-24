@@ -96,3 +96,5 @@ dist-*
 
 # build runtime
 **/rollup.config-*.*
+
+**/*.md
