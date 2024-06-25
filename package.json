@@ -1,9 +1,9 @@
 {
   "name": "xparcai-utils-monorepo",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1-beta.1",
   "packageManager": "pnpm@9.3.0",
-  "description": "🍒 Collection of common JavaScript or TypeScript utils.",
+  "description": "🍒 一个使用TS构建的JS轮子库，专为CV的小趴菜们设计。",
   "author": {
     "name": "VictorBo",
     "email": "hi@vtrbo.cn",
@@ -28,12 +28,15 @@
     "node": ">=18.0.0"
   },
   "scripts": {
+    "docs": "pnpm -F xparcai-utils-docs run docs:dev",
+    "docs:build": "pnpm -F xparcai-utils-docs run docs:build",
     "create": "esno scripts/create-subpackage.ts",
     "build": "pnpm -r --filter=./packages/* run build",
     "release": "pnpm run build && pnpm run test run && run-s release:*",
     "release:bummp": "bumpp -r",
     "release:publish": "pnpm -r --filter=./packages/* publish",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "vitest",
     "clean": "run-s clean:*",
     "clean:deps": "rimraf node_modules && pnpm -r run clean",

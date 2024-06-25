@@ -66,6 +66,7 @@ typings/
 chche
 .temp
 temp
+**/cache
 
 # next.js build output
 .next
@@ -87,6 +88,9 @@ dist-*
 .idea
 # .vscode
 
+# Plugins
+.history/
+
 # Svelte
 /.svelte-kit
 
@@ -95,3 +99,5 @@ dist-*
 
 # build runtime
 **/rollup.config-*.*
+
+**/*.md
