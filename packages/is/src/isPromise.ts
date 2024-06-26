@@ -1,4 +1,5 @@
 import { isFunction } from './isFunction'
+import { isObject } from './isObject'
 
 /**
  * 某个数据/方法是否是Promise
@@ -7,7 +8,7 @@ import { isFunction } from './isFunction'
  */
 export function isPromise<T>(data: unknown): data is Promise<T> {
   return (
-    !!data
+    isObject(data)
     && isFunction((data as any).then)
     && isFunction((data as any).catch)
   )
