@@ -1,20 +1,23 @@
 import { isArray, isDate, isObject, isRegExp } from '@xparcai-utils/is'
 
 /**
- * @func deepCopy
- * @param {T} data 将要复制的对象
- * @returns {T} 复制后的对象
- * @desc 深拷贝对象
+ * 深拷贝某个数据
+ * @param {T} data 某个数据
+ * @returns {T} 拷贝后的数据
  */
 export function deepCopy<T>(data: T): T
+
 /**
- * @func deepCopy
- * @param {T} data 将要复制的对象
- * @param {H extends object} [hash]  记录已复制过对象的哈希值
- * @returns {T} 复制后的对象
- * @desc 深拷贝对象
+ * 深拷贝某个数据
+ * @param {T} data 某个数据
+ * @param {H extends object} [hash] 解决循环依赖传入的记录对象
+ * @returns {T} 拷贝后的数据
  */
 export function deepCopy<T, H extends object>(data: T, hash?: H): T
+
+/**
+ * 深拷贝实现
+ */
 export function deepCopy<T>(data: T, hash: any = new WeakMap()): T {
   // 日期对象直接返回一个新的日期对象
   if (isDate(data)) {
