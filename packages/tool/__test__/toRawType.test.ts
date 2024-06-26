@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { toRawType } from '../index'
+import { toRawType } from '..'
 
 describe('@xparcai-utils/tool', () => {
   it('toRawType', () => {
