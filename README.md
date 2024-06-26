@@ -7,16 +7,16 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/npm-v0.0.1-brightgreen" />
-  <img src="https://img.shields.io/badge/-Rollup-34495e?logo=rollup" />
-  <img src="https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/-ESLint-4b32c3?logo=eslint&logoColor=white" />
   <img src="https://img.shields.io/badge/-pnpm-F69220?logo=pnpm&logoColor=white" />
+  <img src="https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/-Rollup-34495e?logo=rollup" />
+  <img src="https://img.shields.io/badge/-ESLint-4b32c3?logo=eslint&logoColor=white" />
   <img src="https://img.shields.io/badge/-Prettier-ef9421?logo=Prettier&logoColor=white" alt="Prettier">
-  <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="Apache">
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT">
 <p>
 你的救星，小趴菜工具库，一个轻量级的轮子集合，它来了~~~!
 
-[使用文档介绍](https://xparcai.github.io/xparcai-utils/) | [参与文档介绍](https://github.com/xparcai/xparcai-utils/blob/main/CONTRIBUTING.md)
+[使用文档介绍](https://xparcai.github.io/xparcai-utils/) | [参与文档介绍](./CONTRIBUTING.md)
 
 # 特点
 
@@ -40,10 +40,6 @@ yarn add xparcai-utils
 pnpm add xparcai-utils
 ```
 
-> 如果你不想在项目中引入太多依赖，而又想使用某一个方法
->
-> 那么可以复制文档中的源码，在你的项目中引入
-
 ### CDN源
 
 ```bash
@@ -65,13 +61,14 @@ const obj2 = deepCopy(obj)
 // { a: '123', b: 456 }
 ```
 
-## **参与者**
+## 贡献者
 
-这个项目需要感谢的参与者
+有兴趣做出贡献的开发者应该阅读 [行为准则](./CODE_OF_CONDUCT.md) 和 [贡献指南](./CONTRIBUTING.md)。
+
+感谢所有为 `xparcai-utils` 做出贡献的开发者！
 
 <div align="left">
   <a href="https://github.com/xparcai/xparcai-utils/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=xparcai/xparcai-utils" />
   </a>
 </div>
-<!-- 🍒🍇🫑 Collection of common JavaScript or TypeScript utils. -->

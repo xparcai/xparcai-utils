@@ -79,6 +79,6 @@
     "commit-msg": "npm run precommit"
   },
   "lint-staged": {
-    "*": "npm run lint --fix"
+    "*": "npm run lint:fix"
   }
 }
