@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { toSlash } from '..'
+import { toSlash } from '../src/toSlash'
 
 describe('@xparcai-utils/string', () => {
   it('toSlash', () => {

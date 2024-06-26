@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isUndefined } from '../index'
+import { isUndefined } from '../src/isUndefined'
 
 describe('@xparcai-utils/is', () => {
   it('isUndefined', () => {

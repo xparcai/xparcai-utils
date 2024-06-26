@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isBoolean } from '../index'
+import { isBoolean } from '../src/isBoolean'
 
 describe('@xparcai-utils/is', () => {
   it('isBoolean', () => {
