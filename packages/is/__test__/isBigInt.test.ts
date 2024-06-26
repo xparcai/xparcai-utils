@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isBigInt } from '../index'
+import { isBigInt } from '../src/isBigInt'
 
 describe('@xparcai-utils/is', () => {
   it('isBigInt', () => {

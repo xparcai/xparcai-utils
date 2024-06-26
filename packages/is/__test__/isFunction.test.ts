@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { isFunction } from '../index'
+import { isFunction } from '../src/isFunction'
 
 describe('@xparcai-utils/is', () => {
   it('isFunction', () => {

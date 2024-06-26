@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { deepCopy } from '..'
+import { deepCopy } from '../src/deepCopy'
 
 describe('@xparcai-utils/object', () => {
   it('deepCopy: 复制基本类型', () => {

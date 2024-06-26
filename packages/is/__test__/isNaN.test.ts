@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isNaN } from '../index'
+import { isNaN } from '../src/isNaN'
 
 describe('@xparcai-utils/is', () => {
   it('isNaN', () => {

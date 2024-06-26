@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isFalse } from '../index'
+import { isFalse } from '../src/isFalse'
 
 describe('@xparcai-utils/is', () => {
   it('isFalse', () => {

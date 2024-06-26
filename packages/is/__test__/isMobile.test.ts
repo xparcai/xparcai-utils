@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isMobile } from '..'
+import { isMobile } from '../src/isMobile'
 
 describe('@xparcai-utils/is', () => {
   it('isMobile', () => {
