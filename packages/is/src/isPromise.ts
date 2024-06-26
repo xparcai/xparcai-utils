@@ -8,8 +8,8 @@ import { isObject } from './isObject'
  */
 export function isPromise<T>(data: unknown): data is Promise<T> {
   return (
-    isObject(data)
-    && isFunction((data as any).then)
-    && isFunction((data as any).catch)
+    isObject<{ then: Function, catch: Function }>(data)
+    && isFunction(data.then)
+    && isFunction(data.catch)
   )
 }
