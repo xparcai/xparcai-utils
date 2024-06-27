@@ -90,9 +90,9 @@ function pnpmInstall() {
 }
 
 // 创建子包
-async function createSubpackage() {
-  let subpackageName = args[0]
-  let functionName = args[1]
+export async function createSubpackage(subpackageName?: string, functionName?: string) {
+  subpackageName = subpackageName ?? args[0]
+  functionName = functionName ?? args[1]
 
   if (!subpackageName || !functionName) {
     // 无参调起交互式命令行
@@ -125,9 +125,9 @@ async function createSubpackage() {
   }
 
   // 转换为短横线
-  subpackageName = toLinesCase(subpackageName)
+  subpackageName = toLinesCase(subpackageName!)
   // 转换为小驼峰
-  functionName = toCamelCase(functionName)
+  functionName = toCamelCase(functionName!)
 
   const { dirNames: subpackageDirNames } = loadSubpackage()
 

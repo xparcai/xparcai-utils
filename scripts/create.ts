@@ -1,13 +1,14 @@
 import process from 'node:process'
-import { fileURLToPath } from 'node:url'
 import prompts from '@posva/prompts'
-import { loadSubpackage, runCommand } from './utils'
+import { loadSubpackage } from './utils'
+import { createSubpackage } from './create-subpackage'
+import { createFunction } from './create-function'
 
 const [, , ...args] = process.argv
 
 async function create() {
   if (args.length !== 2) {
-    const type = (
+    const type: 'subpackage' | 'function' = (
       await prompts([
         {
           name: 'type',
@@ -21,8 +22,12 @@ async function create() {
       ])
     ).type
 
-    const dirname = fileURLToPath(new URL('../', import.meta.url))
-    runCommand(`pnpm run create:${type}`, dirname)
+    const typeCreateFn = {
+      subpackage: createSubpackage,
+      function: createFunction,
+    }
+
+    typeCreateFn[type]()
   }
   else {
     const subpackageName = args[0]
@@ -33,13 +38,11 @@ async function create() {
     // 校验子包是否存在
     if (!subpackageDirNames.includes(subpackageName)) {
       // 不存在: 创建子包
-      const dirname = fileURLToPath(new URL('../', import.meta.url))
-      runCommand(`pnpm run create:subpackage ${subpackageName} ${functionName}`, dirname)
+      createSubpackage(subpackageName, functionName)
     }
     else {
       // 存在: 创建函数
-      const dirname = fileURLToPath(new URL('../', import.meta.url))
-      runCommand(`pnpm run create:function ${subpackageName} ${functionName}`, dirname)
+      createFunction(subpackageName, functionName)
     }
   }
 }

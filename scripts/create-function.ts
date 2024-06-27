@@ -15,9 +15,9 @@ function writeSubpackageIndex(subpackageName: string, functionName: string) {
 }
 
 // 创建函数
-async function createFunction() {
-  let subpackageName = args[0]
-  let functionName = args[1]
+export async function createFunction(subpackageName?: string, functionName?: string) {
+  subpackageName = subpackageName ?? args[0]
+  functionName = functionName ?? args[1]
   const { choices } = loadSubpackage()
   if (!subpackageName || !functionName) {
     // 无参调起交互式命令行
@@ -45,9 +45,9 @@ async function createFunction() {
   }
 
   // 转换为小驼峰
-  functionName = toCamelCase(functionName)
+  functionName = toCamelCase(functionName!)
 
-  const { dirNames: functionDirNames } = loadFunction(subpackageName)
+  const { dirNames: functionDirNames } = loadFunction(subpackageName!)
 
   // 校验方法是否存在
   if (functionDirNames.includes(functionName)) {
@@ -57,9 +57,9 @@ async function createFunction() {
   const spinners = ora()
   spinners.text = `${spinnersPrefixText}创建[${packagePrefix}/${subpackageName}] => ${functionName}中...`
   spinners.start()
-  writeSubpackageIndex(subpackageName, functionName)
-  writeSubpackageFunction(subpackageName, functionName)
-  writeSubpackageFunctionTest(subpackageName, functionName)
+  writeSubpackageIndex(subpackageName!, functionName)
+  writeSubpackageFunction(subpackageName!, functionName)
+  writeSubpackageFunctionTest(subpackageName!, functionName)
   spinners.succeed(`${spinnersPrefixText}创建[${packagePrefix}/${subpackageName}] => ${functionName}成功`)
 }
 
