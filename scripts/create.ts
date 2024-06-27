@@ -1,33 +1,26 @@
 import process from 'node:process'
 import prompts from '@posva/prompts'
-import { loadSubpackage } from './utils'
-import { createSubpackage } from './create-subpackage'
-import { createFunction } from './create-function'
+import { loadSubpackage, runCommand } from './utils'
 
 const [, , ...args] = process.argv
 
 async function create() {
+  console.log('--------')
+  console.log(args.length, process.cwd())
   if (args.length !== 2) {
-    const type: 'subpackage' | 'function' = (
-      await prompts([
-        {
-          name: 'type',
-          type: 'select',
-          message: '请选择子包',
-          choices: [
-            { title: '创建子包', value: 'subpackage' },
-            { title: '创建函数', value: 'function' },
-          ],
-        },
-      ])
-    ).type
-
-    const typeCreateFn = {
-      subpackage: createSubpackage,
-      function: createFunction,
-    }
-
-    typeCreateFn[type]()
+    const response = await prompts([
+      {
+        name: 'type',
+        type: 'select',
+        message: '请选择子包',
+        choices: [
+          { title: '创建子包', value: 'subpackage' },
+          { title: '创建函数', value: 'function' },
+        ],
+      },
+    ])
+    const type: 'subpackage' | 'function' = response.type
+    runCommand(`pnpm run create:${type}`, process.cwd(), { silent: false })
   }
   else {
     const subpackageName = args[0]
@@ -38,11 +31,11 @@ async function create() {
     // 校验子包是否存在
     if (!subpackageDirNames.includes(subpackageName)) {
       // 不存在: 创建子包
-      createSubpackage(subpackageName, functionName)
+      runCommand(`pnpm run create:subpackage ${subpackageName} ${functionName}`, process.cwd(), { silent: false })
     }
     else {
       // 存在: 创建函数
-      createFunction(subpackageName, functionName)
+      runCommand(`pnpm run create:function ${subpackageName} ${functionName}`, process.cwd(), { silent: false })
     }
   }
 }

@@ -90,9 +90,9 @@ function pnpmInstall() {
 }
 
 // 创建子包
-export async function createSubpackage(subpackageName?: string, functionName?: string) {
-  subpackageName = subpackageName ?? args[0]
-  functionName = functionName ?? args[1]
+export async function createSubpackage() {
+  let subpackageName = args[0]
+  let functionName = args[1]
 
   if (!subpackageName || !functionName) {
     // 无参调起交互式命令行

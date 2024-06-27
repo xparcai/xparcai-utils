@@ -15,9 +15,9 @@ function writeSubpackageIndex(subpackageName: string, functionName: string) {
 }
 
 // 创建函数
-export async function createFunction(subpackageName?: string, functionName?: string) {
-  subpackageName = subpackageName ?? args[0]
-  functionName = functionName ?? args[1]
+export async function createFunction() {
+  let subpackageName = args[0]
+  let functionName = args[1]
   const { choices } = loadSubpackage()
   if (!subpackageName || !functionName) {
     // 无参调起交互式命令行
