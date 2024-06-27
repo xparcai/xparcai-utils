@@ -98,5 +98,5 @@ dist-*
 **/types/auto-*.d.ts
 
 # build runtime
-**/rollup.config*.*
-**/vite.config.ts*.*
+**/rollup.config-*
+**/vite.config.ts.*
