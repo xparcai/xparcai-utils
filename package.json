@@ -28,7 +28,9 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "create": "esno scripts/create-subpackage.ts",
+    "create:subpackage": "esno scripts/create-subpackage.ts",
+    "create:function": "esno scripts/create-function.ts",
+    "create": "esno scripts/create.ts",
     "build": "pnpm -r --filter=./packages/* run build",
     "docs": "pnpm -F xparcai-utils-docs run docs:dev",
     "docs:build": "pnpm -F xparcai-utils-docs run docs:build",
@@ -48,6 +50,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^2.21.1",
     "@babel/preset-env": "^7.24.7",
+    "@posva/prompts": "^2.4.4",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-eslint": "^9.0.5",
@@ -59,6 +62,7 @@
     "bumpp": "^9.4.1",
     "eslint-plugin-format": "^0.1.1",
     "esno": "^4.7.0",
+    "fast-glob": "^3.3.2",
     "jsdom": "^24.1.0",
     "lint-staged": "^15.2.7",
     "magic-string": "^0.30.10",
