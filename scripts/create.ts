@@ -31,7 +31,7 @@ async function create() {
     ])
     if (!response?.type) {
       log.error('未能获取明确的创建类型，终止创建！')
-      process.exit(1)
+      return
     }
     const type: 'subpackage' | 'function' = response.type
     await fnMap[type]()
