@@ -3,6 +3,6 @@ import { isBrowser } from '../src/isBrowser'
 
 describe('@xparcai-utils/is', () => {
   it('isBrowser', () => {
-    expect(isBrowser()).toBe(undefined)
+    expect(isBrowser()).toBe(false)
   })
 })
