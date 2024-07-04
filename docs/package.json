@@ -2,7 +2,7 @@
   "name": "xparcai-utils-docs",
   "type": "module",
   "version": "0.0.1-beta.1",
-  "description": "🍒 Collection of common JavaScript or TypeScript utils.",
+  "description": "🍒 一个使用TS构建的JS轮子库，专为CV的小趴菜们设计。",
   "author": {
     "name": "VictorBo",
     "email": "hi@vtrbo.cn",
@@ -26,7 +26,11 @@
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:preview": "vitepress preview",
+    "clean": "run-s clean:*",
+    "clean:deps": "rimraf node_modules",
+    "clean:dist": "rimraf .vitepress/dist",
+    "clean:cache": "rimraf .vitepress/cache"
   },
   "devDependencies": {
     "vite": "^5.3.1",

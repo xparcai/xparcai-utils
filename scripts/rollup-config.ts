@@ -1,12 +1,14 @@
 import type { RollupOptions } from 'rollup'
 import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
+import nodePolyfills from 'rollup-plugin-polyfill-node'
 import resolve from '@rollup/plugin-node-resolve'
 import typescript from 'rollup-plugin-typescript2'
 import dts from 'rollup-plugin-dts'
 import json from '@rollup/plugin-json'
 import eslint from '@rollup/plugin-eslint'
 import terser from '@rollup/plugin-terser'
+import replace from '@rollup/plugin-replace'
 import { resolveRealPath } from './utils'
 
 export function resolveRollupConfig(packageName: string): RollupOptions[] {
@@ -20,7 +22,15 @@ export function resolveRollupConfig(packageName: string): RollupOptions[] {
           babelHelpers: 'bundled',
         }),
         commonjs(),
+        nodePolyfills(),
         resolve(),
+        // 为了解决浏览器环境 process not defined 的问题
+        replace({
+          'process.env': '(typeof window !== undefined ? {} : process).env || {}',
+          'process.argv': '(typeof window !== undefined ? {} : process).argv || []',
+          'process.platform': '(typeof window !== undefined ? {} : process).platform || ""',
+          'preventAssignment': true,
+        }),
         typescript({
           tsconfig: resolveRealPath('../tsconfig.json'),
         }),

@@ -23,10 +23,13 @@
   <body>
     <div class="xparcai-welcome">欢迎测试xparcai-utils工具库</div>
     <script>
-      console.log(
-        'umd => ',
-        window['xparcai-utils'].isType('xparcai', 'String'),
-      )
+      const xparcai = window['xparcai-utils']
+      console.log('xparcai函数列表 => ', xparcai)
+      console.log('umd => ', xparcai.isType('xparcai', 'String'))
+      xparcai.log.success('一枚小趴菜')
+      xparcai.log.error('一枚小趴菜')
+      xparcai.log.warn('一枚小趴菜')
+      xparcai.log.info('一枚小趴菜')
     </script>
   </body>
 </html>

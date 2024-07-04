@@ -48,7 +48,7 @@ export default () => {
   return defineConfig({
     base: '/xparcai-utils/',
     title: 'XParCai工具库',
-    description: 'Collection of common JavaScript or TypeScript utils.',
+    description: '一个使用TS构建的JS轮子库，专为CV的小趴菜们设计。',
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
       outline: { label: '快速定位' },

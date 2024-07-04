@@ -1,7 +1,7 @@
 import { isBrowser, isEmptyArray, isEmptyString } from '@xparcai-utils/is'
 import { template as templateFn } from '@xparcai-utils/string'
-import pc from 'picocolors'
 import type { Colors } from 'picocolors/types'
+import picoColors from 'picocolors'
 
 let _prefix: string = ''
 
@@ -17,14 +17,14 @@ function setPrefix(prefix: string) {
 const nodeColors: Record<Type, Exclude<keyof Colors, 'isColorSupported' | 'reset' | 'bold' | 'dim' | 'italic' | 'underline' | 'inverse' | 'hidden' | 'strikethrough'>> = {
   success: 'green',
   error: 'red',
-  warning: 'yellow',
+  warn: 'yellow',
   info: 'blue',
 }
 // 浏览器环境可以设置任何颜色
 const browserColors = {
   success: '#67C23A',
   error: '#F56C6C',
-  warning: '#E6A23C',
+  warn: '#E6A23C',
   info: '#909399',
 }
 let _typeColors = { ...browserColors }
@@ -103,7 +103,7 @@ function _log(type: Type, content: unknown, prefix: string = _prefix) {
       console.log(template, contentStyle)
     }
     else {
-      console.log(pc[nodeColors[type]](template.replace(/%c/g, '')))
+      console.log(picoColors[nodeColors[type]](template.replace(/%c/g, '')))
     }
   }
   else {
@@ -124,7 +124,7 @@ function _log(type: Type, content: unknown, prefix: string = _prefix) {
       console.log(template, prefixStyle, contentStyle)
     }
     else {
-      console.log(pc[nodeColors[type]](template.replace(/%c/g, '')))
+      console.log(picoColors[nodeColors[type]](template.replace(/%c/g, '')))
     }
   }
 }
@@ -224,15 +224,13 @@ function picture(url: string, scale = 1) {
   img.src = url
 }
 
-const log = {
+export const log = {
   success: (content: unknown, prefix: string = _prefix) => _log('success', content, prefix),
   error: (content: unknown, prefix: string = _prefix) => _log('error', content, prefix),
-  warning: (content: unknown, prefix: string = _prefix) => _log('warning', content, prefix),
+  warn: (content: unknown, prefix: string = _prefix) => _log('warn', content, prefix),
   info: (content: unknown, prefix: string = _prefix) => _log('info', content, prefix),
   table,
   picture,
   setPrefix,
   setColors,
 }
-
-export { log }
