@@ -1,10 +1,8 @@
-import process from 'node:process'
 import fs from 'node:fs'
+import process from 'node:process'
 import prompts from '@posva/prompts'
 import ora from 'ora'
 import { loadFunction, loadSubpackage, packagePrefix, resolveRealPath, spinnersPrefixText, toCamelCase, writeSubpackageFunction, writeSubpackageFunctionTest } from './utils'
-
-const [, , ...args] = process.argv
 
 // 写子包的index.ts - 这里侧重的是增加导出
 function writeSubpackageIndex(subpackageName: string, functionName: string) {
@@ -15,9 +13,7 @@ function writeSubpackageIndex(subpackageName: string, functionName: string) {
 }
 
 // 创建函数
-export async function createFunction() {
-  let subpackageName = args[0]
-  let functionName = args[1]
+export async function createFunction(subpackageName?: string, functionName?: string) {
   const { choices } = loadSubpackage()
   if (!subpackageName || !functionName) {
     // 无参调起交互式命令行
@@ -40,6 +36,10 @@ export async function createFunction() {
         },
       },
     ])
+    if (!response?.subpackage || !response.name) {
+      console.log('未能获取明确的包名和函数名，终止创建！')
+      process.exit(1)
+    }
     subpackageName = response.subpackage.trim()
     functionName = response.name.trim()
   }
@@ -51,7 +51,8 @@ export async function createFunction() {
 
   // 校验方法是否存在
   if (functionDirNames.includes(functionName)) {
-    return console.error(`方法${functionName}已存在`)
+    console.log(`子包${subpackageName}中，方法${functionName}已存在，终止创建！`)
+    process.exit(1)
   }
 
   const spinners = ora()
@@ -62,5 +63,3 @@ export async function createFunction() {
   writeSubpackageFunctionTest(subpackageName!, functionName)
   spinners.succeed(`${spinnersPrefixText}创建[${packagePrefix}/${subpackageName}] => ${functionName}成功`)
 }
-
-await createFunction()

@@ -28,8 +28,6 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "create:subpackage": "esno scripts/create-subpackage.ts",
-    "create:function": "esno scripts/create-function.ts",
     "create": "esno scripts/create.ts",
     "build": "pnpm -r --filter=./packages/* run build",
     "docs": "pnpm -F xparcai-utils-docs run docs:dev",
