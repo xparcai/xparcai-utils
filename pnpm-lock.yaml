@@ -152,6 +152,9 @@ importers:
       '@xparcai-utils/string':
         specifier: workspace:*
         version: link:../string
+      picocolors:
+        specifier: ^1.0.1
+        version: 1.0.1
 
   packages/object:
     devDependencies:

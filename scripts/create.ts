@@ -1,8 +1,11 @@
 import process from 'node:process'
 import prompts from '@posva/prompts'
+import { log } from '../packages/log'
 import { loadSubpackage } from './utils'
 import { createSubpackage } from './create-subpackage'
 import { createFunction } from './create-function'
+
+log.setPrefix('[xparcai-utils]: ')
 
 const [, , ...args] = process.argv
 
@@ -27,7 +30,7 @@ async function create() {
       },
     ])
     if (!response?.type) {
-      console.log('未能获取明确的创建类型，终止创建！')
+      log.error('未能获取明确的创建类型，终止创建！')
       process.exit(1)
     }
     const type: 'subpackage' | 'function' = response.type

@@ -1,5 +1,7 @@
-import { isEmptyArray, isEmptyString } from '@xparcai-utils/is'
+import { isBrowser, isEmptyArray, isEmptyString } from '@xparcai-utils/is'
 import { template as templateFn } from '@xparcai-utils/string'
+import pc from 'picocolors'
+import type { Colors } from 'picocolors/types'
 
 let _prefix: string = ''
 
@@ -11,22 +13,30 @@ function setPrefix(prefix: string) {
   _prefix = prefix
 }
 
-const _typeDefault = {
+// 固定 ASSIC 编码颜色
+const nodeColors: Record<Type, Exclude<keyof Colors, 'isColorSupported' | 'reset' | 'bold' | 'dim' | 'italic' | 'underline' | 'inverse' | 'hidden' | 'strikethrough'>> = {
+  success: 'green',
+  error: 'red',
+  warning: 'yellow',
+  info: 'blue',
+}
+// 浏览器环境可以设置任何颜色
+const browserColors = {
   success: '#67C23A',
   error: '#F56C6C',
   warning: '#E6A23C',
   info: '#909399',
 }
-let _type = { ..._typeDefault }
+let _typeColors = { ...browserColors }
 
-type Type = keyof typeof _type
+type Type = keyof typeof _typeColors
 
 /**
  * 设置自定义类型
- * @param type 自定义类型
+ * @param colors 自定义类型
  */
-function setType(type: Record<Type, string>) {
-  _type = { ..._typeDefault, ...type }
+function setColors(colors: Record<Type, string>) {
+  _typeColors = { ...browserColors, ...colors }
 }
 
 interface PresetOptions {
@@ -55,7 +65,7 @@ const _presetOptions: PresetOptions = {
  * 获取类型对应的配置项
  */
 function getTypeOptions(type: Type) {
-  const typeColor = _type[type]
+  const typeColor = _typeColors[type]
   return {
     ..._presetOptions,
     color: typeColor,
@@ -64,7 +74,7 @@ function getTypeOptions(type: Type) {
   }
 }
 
-const _template: string = '%c {prefix} %c {content} %c'
+const _template: string = '%c{prefix}%c{content}'
 
 /**
  * log type 实现
@@ -87,9 +97,14 @@ function _log(type: Type, content: unknown, prefix: string = _prefix) {
     typeOptions,
   )
   if (isEmptyString(_prefix) && isEmptyString(prefix)) {
-    template = template.replace('%c {prefix} ', '')
-    template = templateFn(_template, { prefix, content: content as string })
-    console.log(template, contentStyle, 'background:transparent')
+    template = template.replace(/.*?(%c\{content\})/g, '$1')
+    template = templateFn(template, { prefix, content: content as string })
+    if (isBrowser()) {
+      console.log(template, contentStyle)
+    }
+    else {
+      console.log(pc[nodeColors[type]](template.replace(/%c/g, '')))
+    }
   }
   else {
     const prefixStyle = templateFn(
@@ -104,7 +119,13 @@ function _log(type: Type, content: unknown, prefix: string = _prefix) {
       `,
       typeOptions,
     )
-    console.log(template, prefixStyle, contentStyle, 'background:transparent')
+    template = templateFn(template, { prefix, content: content as string })
+    if (isBrowser()) {
+      console.log(template, prefixStyle, contentStyle)
+    }
+    else {
+      console.log(pc[nodeColors[type]](template.replace(/%c/g, '')))
+    }
   }
 }
 
@@ -211,7 +232,7 @@ const log = {
   table,
   picture,
   setPrefix,
-  setType,
+  setColors,
 }
 
 export { log }
