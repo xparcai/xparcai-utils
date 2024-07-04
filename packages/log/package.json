@@ -54,6 +54,7 @@
     "clean:deps": "rimraf node_modules"
   },
   "devDependencies": {
-    "@xparcai-utils/is": "workspace:*"
+    "@xparcai-utils/is": "workspace:*",
+    "@xparcai-utils/string": "workspace:*"
   }
 }

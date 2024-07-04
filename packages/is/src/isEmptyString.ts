@@ -6,5 +6,5 @@ import { isString } from './isString'
  * @returns 是否为空字符串
  */
 export function isEmptyString(str: unknown): boolean {
-  return isString(str) && str !== ''
+  return isString(str) && str === ''
 }

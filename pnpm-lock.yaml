@@ -149,6 +149,9 @@ importers:
       '@xparcai-utils/is':
         specifier: workspace:*
         version: link:../is
+      '@xparcai-utils/string':
+        specifier: workspace:*
+        version: link:../string
 
   packages/object:
     devDependencies:
