@@ -1,13 +1,11 @@
-import process from 'node:process'
 import fs from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import process from 'node:process'
 import ora from 'ora'
 import MagicString from 'magic-string'
 import prompts from '@posva/prompts'
 import { loadFunction, loadSubpackage, packagePrefix, resolveRealPath, runCommand, sortJsonObject, spinnersPrefixText, toCamelCase, toLinesCase, writeSubpackageFunction, writeSubpackageFunctionTest } from './utils'
-
-const [, , ...args] = process.argv
 
 // 复制模板
 function copyTemplate(templatePath: string, subpackagePath: string, functionName: string) {
@@ -90,10 +88,7 @@ function pnpmInstall() {
 }
 
 // 创建子包
-export async function createSubpackage() {
-  let subpackageName = args[0]
-  let functionName = args[1]
-
+export async function createSubpackage(subpackageName?: string, functionName?: string) {
   if (!subpackageName || !functionName) {
     // 无参调起交互式命令行
     const response = await prompts([
@@ -120,6 +115,10 @@ export async function createSubpackage() {
         },
       },
     ])
+    if (!response?.subpackage || !response.function) {
+      console.log('未能获取明确的包名和函数名，终止创建！')
+      process.exit(1)
+    }
     subpackageName = response.subpackage.trim()
     functionName = response.function.trim()
   }
@@ -133,14 +132,14 @@ export async function createSubpackage() {
 
   // 校验子包是否存在
   if (subpackageDirNames.includes(subpackageName)) {
-    return console.error(`子包${subpackageName}已存在`)
+    return console.log(`子包${subpackageName}已存在，终止创建！`)
   }
 
   const { dirNames: functionDirNames } = loadFunction(subpackageName)
 
   // 校验方法是否存在
   if (functionDirNames.includes(functionName)) {
-    return console.error(`方法${functionName}已存在`)
+    return console.log(`子包${subpackageName}中，方法${functionName}已存在，终止创建！`)
   }
 
   const spinners = ora()
@@ -167,5 +166,3 @@ export async function createSubpackage() {
     spinners.fail(`${spinnersPrefixText}创建[${packagePrefix}/${subpackageName}]子包失败`)
   })
 }
-
-await createSubpackage()
