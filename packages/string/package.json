@@ -52,5 +52,8 @@
     "clean": "run-s clean:*",
     "clean:dist": "rimraf dist",
     "clean:deps": "rimraf node_modules"
+  },
+  "devDependencies": {
+    "@xparcai-utils/is": "workspace:*"
   }
 }

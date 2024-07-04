@@ -18,20 +18,20 @@ describe('@xparcai-utils/log', () => {
     const data = [
       { id: 1, name: 'Alice', age: 25 },
       { id: 2, name: 'Bob', age: 30 },
-      { id: 3, name: 'Charlie', age: 35 }
+      { id: 3, name: 'Charlie', age: 35 },
     ]
     const columns = [
       {
-          title: 'ID',
-          key: 'id'
+        title: 'ID',
+        key: 'id',
       },
       {
-          title: '名字',
-          key: 'name'
+        title: '名字',
+        key: 'name',
       },
       {
-          title: '年龄',
-          key: 'age'
+        title: '年龄',
+        key: 'age',
       },
     ]
     expect(log.table(data, columns))

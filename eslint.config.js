@@ -20,4 +20,11 @@ export default defineConfig(
       'unicorn/error-message': 'off',
     },
   },
+  // @xparcai-utils/log 包取消禁用console
+  {
+    files: ['packages/log/**/*.*'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
 )
