@@ -66,7 +66,7 @@
     "jsdom": "^24.1.0",
     "lint-staged": "^15.2.7",
     "magic-string": "^0.30.10",
-    "npm-run-all": "^4.1.5",
+    "npm-run-all2": "^6.2.2",
     "only-allow": "^1.2.1",
     "ora": "^8.0.1",
     "rimraf": "^5.0.7",
