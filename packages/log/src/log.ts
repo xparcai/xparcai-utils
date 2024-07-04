@@ -25,7 +25,7 @@ type Type = keyof typeof _type
  * 设置自定义类型
  * @param type 自定义类型
  */
-function setType(type: Record<string, string>) {
+function setType(type: Record<Type, string>) {
   _type = { ..._typeDefault, ...type }
 }
 
@@ -76,16 +76,32 @@ function _log(type: Type, content: unknown, prefix: string = _prefix) {
   let template = _template
   const typeOptions = getTypeOptions(type)
   const contentStyle = templateFn(
-    'border-width: {borderWidth}; border-style: {borderStyle}; border-color: {borderColor}; border-radius: {borderRadius}; color: {color}; padding: {padding};',
+    `
+      border-width: {borderWidth}; 
+      border-style: {borderStyle}; 
+      border-color: {borderColor}; 
+      border-radius: {borderRadius}; 
+      color: {color}; 
+      padding: {padding};
+    `,
     typeOptions,
   )
   if (isEmptyString(_prefix) && isEmptyString(prefix)) {
     template = template.replace('%c {prefix} ', '')
     template = templateFn(_template, { prefix, content: content as string })
+    console.log(template, contentStyle, 'background:transparent')
   }
   else {
     const prefixStyle = templateFn(
-      'border-width: {borderWidth}; border-style: {borderStyle}; border-color: {borderColor}; border-radius: {borderRadius}; color: #FFFFFF; background-color: {backgroundColor}; padding: {padding};',
+      `
+        border-width: {borderWidth}; 
+        border-style: {borderStyle}; 
+        border-color: {borderColor}; 
+        border-radius: {borderRadius}; 
+        color: #FFFFFF; 
+        background-color: {backgroundColor}; 
+        padding: {padding};
+      `,
       typeOptions,
     )
     console.log(template, prefixStyle, contentStyle, 'background:transparent')
@@ -173,20 +189,21 @@ function picture(url: string, scale = 1) {
 
       console.log(
           `%c sup?`,
-          `font-size: 1px;
-                  padding: ${Math.floor((img.height * scale) / 2)}px ${Math.floor((img.width * scale) / 2)}px;
-                  background-image: url(${dataUri});
-                  background-repeat: no-repeat;
-                  background-size: ${img.width * scale}px ${img.height * scale}px;
-                  color: transparent;
-                  `,
+          `
+            font-size: 1px;
+            padding: ${Math.floor((img.height * scale) / 2)}px ${Math.floor((img.width * scale) / 2)}px;
+            background-image: url(${dataUri});
+            background-repeat: no-repeat;
+            background-size: ${img.width * scale}px ${img.height * scale}px;
+            color: transparent;
+          `,
       )
     }
   }
   img.src = url
 }
 
-export const log = {
+const log = {
   success: (content: unknown, prefix: string = _prefix) => _log('success', content, prefix),
   error: (content: unknown, prefix: string = _prefix) => _log('error', content, prefix),
   warning: (content: unknown, prefix: string = _prefix) => _log('warning', content, prefix),
@@ -196,3 +213,5 @@ export const log = {
   setPrefix,
   setType,
 }
+
+export { log }
