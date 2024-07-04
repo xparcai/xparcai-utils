@@ -2,7 +2,7 @@
   "name": "xparcai-utils-example",
   "type": "module",
   "version": "0.0.1-beta.1",
-  "description": "🍒 Collection of common JavaScript or TypeScript utils.",
+  "description": "🍒 一个使用TS构建的JS轮子库，专为CV的小趴菜们设计。",
   "author": {
     "name": "VictorBo",
     "email": "hi@vtrbo.cn",

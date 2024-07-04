@@ -23,5 +23,4 @@ export function isHttp(url: string, condition: Condition = _condition): boolean 
  */
 isHttp.setCondition = function (condition: Condition = _condition) {
   _condition = condition
-  return isHttp
 }

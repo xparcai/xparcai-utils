@@ -1,5 +1,5 @@
 {
-  "name": "@xparcai-utils/subpackage",
+  "name": "@xparcai-utils/log",
   "type": "module",
   "version": "0.0.0",
   "description": "🍒 一个使用TS构建的JS轮子库，专为CV的小趴菜们设计。",
@@ -51,5 +51,12 @@
     "clean": "run-s clean:*",
     "clean:dist": "rimraf dist",
     "clean:deps": "rimraf node_modules"
+  },
+  "dependencies": {
+    "picocolors": "^1.0.1"
+  },
+  "devDependencies": {
+    "@xparcai-utils/is": "workspace:*",
+    "@xparcai-utils/string": "workspace:*"
   }
 }

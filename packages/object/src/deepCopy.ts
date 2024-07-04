@@ -16,7 +16,7 @@ export function deepCopy<T>(data: T): T
 export function deepCopy<T, H extends object>(data: T, hash?: H): T
 
 /**
- * 深拷贝实现
+ * 实现函数
  */
 export function deepCopy<T>(data: T, hash: any = new WeakMap()): T {
   // 日期对象直接返回一个新的日期对象

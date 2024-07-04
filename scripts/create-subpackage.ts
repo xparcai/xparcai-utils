@@ -1,9 +1,7 @@
 import fs from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import process from 'node:process'
 import ora from 'ora'
-import MagicString from 'magic-string'
 import prompts from '@posva/prompts'
 import { loadFunction, loadSubpackage, packagePrefix, resolveRealPath, runCommand, sortJsonObject, spinnersPrefixText, toCamelCase, toLinesCase, writeSubpackageFunction, writeSubpackageFunctionTest } from './utils'
 
@@ -32,10 +30,9 @@ function copyTemplate(templatePath: string, subpackagePath: string, functionName
 // 写core的index.ts
 function writeCoreIndex(subpackageName: string) {
   const filePath = resolveRealPath('../packages/core/index.ts')
-  const fileContent = fs.readFileSync(filePath, 'utf-8')
-  const mst = new MagicString(fileContent)
-  mst.append(`export * from '${packagePrefix}/${subpackageName}'\n`)
-  fs.writeFileSync(filePath, mst.toString())
+  let fileContent = fs.readFileSync(filePath, 'utf-8').trim().split('\n').sort().join('\n')
+  fileContent += '\n' + `export * from '${packagePrefix}/${subpackageName}'` + '\n'
+  fs.writeFileSync(filePath, fileContent)
 }
 
 // 写core的package.json
@@ -117,7 +114,7 @@ export async function createSubpackage(subpackageName?: string, functionName?: s
     ])
     if (!response?.subpackage || !response.function) {
       console.log('未能获取明确的包名和函数名，终止创建！')
-      process.exit(1)
+      return
     }
     subpackageName = response.subpackage.trim()
     functionName = response.function.trim()

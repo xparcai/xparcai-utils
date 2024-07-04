@@ -1,15 +1,14 @@
 import fs from 'node:fs'
-import process from 'node:process'
 import prompts from '@posva/prompts'
 import ora from 'ora'
 import { loadFunction, loadSubpackage, packagePrefix, resolveRealPath, spinnersPrefixText, toCamelCase, writeSubpackageFunction, writeSubpackageFunctionTest } from './utils'
 
 // 写子包的index.ts - 这里侧重的是增加导出
 function writeSubpackageIndex(subpackageName: string, functionName: string) {
-  const exportPath = resolveRealPath(`../packages/${subpackageName}/index.ts`)
-  let exportContent = fs.readFileSync(exportPath, 'utf-8').trim().split('\n').sort().join('\n')
-  exportContent += '\n' + `export * from './src/${functionName}'` + '\n'
-  fs.writeFileSync(exportPath, exportContent)
+  const filePath = resolveRealPath(`../packages/${subpackageName}/index.ts`)
+  let fileContent = fs.readFileSync(filePath, 'utf-8').trim().split('\n').sort().join('\n')
+  fileContent += '\n' + `export * from './src/${functionName}'` + '\n'
+  fs.writeFileSync(filePath, fileContent)
 }
 
 // 创建函数
@@ -38,7 +37,7 @@ export async function createFunction(subpackageName?: string, functionName?: str
     ])
     if (!response?.subpackage || !response.name) {
       console.log('未能获取明确的包名和函数名，终止创建！')
-      process.exit(1)
+      return
     }
     subpackageName = response.subpackage.trim()
     functionName = response.name.trim()
@@ -52,7 +51,7 @@ export async function createFunction(subpackageName?: string, functionName?: str
   // 校验方法是否存在
   if (functionDirNames.includes(functionName)) {
     console.log(`子包${subpackageName}中，方法${functionName}已存在，终止创建！`)
-    process.exit(1)
+    return
   }
 
   const spinners = ora()
